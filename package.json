@@ -8,7 +8,10 @@
     "tsc": "tsc",
     "start": "node build/index.js",
     "dev": "cross-env NODE_ENV=test ts-node-dev src/index.ts",
-    "lint": "eslint --ext .ts ."
+    "lint": "eslint --ext .ts .",
+    "build:ui": "rm -rf front && cd ../aistracker-frontend && npm run build --prod && cp -r build ../aistracker/front",
+    "deploy:full":"rm -rf build && npm run build:ui && git add . && git commit -m 'build' && git push && npm run deploy",
+    "deploy": "git push heroku main"
   },
   "author": "Mikael Bärlund",
   "license": "MIT",
