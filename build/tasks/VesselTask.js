@@ -27,7 +27,7 @@ const task = () => {
                     }, e => console.log(e));
                 }, e => console.log(e));
             });
-            console.log(new Date(), 'done getting vessels.');
+            console.log(new Date(), 'done getting vessels!');
         }, e => console.log(e));
     }, e => console.log(e));
 };
