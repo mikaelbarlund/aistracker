@@ -21,9 +21,10 @@ const task = () => {
                         const oldFeatures = immutable_1.Set(newV.features);
                         const newFeatures = immutable_1.Set(features.features);
                         const allFeatures = immutable_1.Set.union([oldFeatures, newFeatures]);
-                        vessel_1.default.updateOne({ mmsi: newV.mmsi }, { features: allFeatures.toArray() }, { new: true, upsert: true, runValidators: true }).then(
-                        // eslint-disable-next-line @typescript-eslint/no-empty-function
-                        _ => { }, _ => { });
+                        vessel_1.default.updateOne({ mmsi: newV.mmsi }, { features: allFeatures.toArray() }, { new: true, upsert: true, runValidators: true }).then(_ => {
+                            console.log(new Date(), 'done saving vessels!');
+                            // eslint-disable-next-line @typescript-eslint/no-empty-function
+                        }, _ => { });
                     }, e => console.log(e));
                 }, e => console.log(e));
             });

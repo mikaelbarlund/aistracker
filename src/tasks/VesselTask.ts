@@ -5,7 +5,7 @@ import config from '../config';
 import vessel from '../models/vessel';
 import { Feature } from '../types';
 
-const task = () =>{
+const task = () => {
   mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
     .then(
       () => {
@@ -21,8 +21,10 @@ const task = () =>{
                   const newFeatures = Set(features.features);
                   const allFeatures = Set.union([oldFeatures, newFeatures]);
                   vessel.updateOne({ mmsi: newV.mmsi }, { features: allFeatures.toArray() as Feature[] }, { new: true, upsert: true, runValidators: true }).then(
-                  // eslint-disable-next-line @typescript-eslint/no-empty-function
-                    _ => { }, _ => { }
+                    _ => {
+                      console.log(new Date(), 'done saving vessels!');
+                      // eslint-disable-next-line @typescript-eslint/no-empty-function
+                    }, _ => { }
                   );
                 }, e => console.log(e)
                 );
