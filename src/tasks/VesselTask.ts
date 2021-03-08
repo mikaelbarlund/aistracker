@@ -29,7 +29,7 @@ mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology
             }, e => console.log(e)
           );
         });
-        console.log(new Date(), 'done');
+        console.log(new Date(), 'done getting vessels');
       }, e => console.log(e));
     },
     e => console.log(e)
